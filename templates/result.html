@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classification Model Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Spam Classification Model Results</h1>
+
+        <div class="metric">
+            <h2>Evaluation Metrics</h2>
+            <p>Accuracy: <span>{{ results.accuracy }}</span></p>
+            <p>Precision: <span>{{ results.precision }}</span></p>
+            <p>Recall: <span>{{ results.recall }}</span></p>
+            <p>F1-Score: <span>{{ results.f1_score }}</span></p>
+        </div>
+
+        <div class="confusion-matrix">
+            <h2>Confusion Matrix</h2>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Predicted Not Spam</th>
+                    <th>Predicted Spam</th>
+                </tr>
+                <tr>
+                    <th>Actual Not Spam</th>
+                    <td>{{ results.confusion_matrix.tn }}</td>
+                    <td>{{ results.confusion_matrix.fp }}</td>
+                </tr>
+                <tr>
+                    <th>Actual Spam</th>
+                    <td>{{ results.confusion_matrix.fn }}</td>
+                    <td>{{ results.confusion_matrix.tp }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
